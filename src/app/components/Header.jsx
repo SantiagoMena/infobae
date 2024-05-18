@@ -26,7 +26,7 @@ export default function Header() {
     const handleSignIn = async event => {
         event.preventDefault();
         try {
-            const user = await signInWithGoogle();
+            const {user} = await signInWithGoogle();
             // Dispatch login
             dispatchUser({
                 type: "LOGIN",
@@ -54,7 +54,12 @@ export default function Header() {
                 { currentUser ? (
                     <div className="relative">
                         <div onClick={() => setMenuOpen(!menuOpen)} className="flex items-center cursor-pointer">
-                            USUARIO
+                            <img
+                                className="w-10 h-10 rounded-full border mr-2"
+                                src={currentUser.photoURL}
+                                alt={currentUser.email}
+                            />
+                            <span className="text-gray-700 font-medium mr-2">{currentUser.displayName}</span>
                             <svg
                                 className="w-4 h-4 text-gray-700"
                                 fill="currentColor"
