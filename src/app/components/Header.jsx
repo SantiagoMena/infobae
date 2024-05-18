@@ -4,18 +4,33 @@ import {CurrentUserContext} from "@/app/providers";
 import Link from "next/link";
 
 export default function Header() {
+    // Obtener usuario del contexto
     const { currentUser, dispatchUser } = useContext(CurrentUserContext);
 
+    // Función para cerrar sesión
     const handleSignOut = async event => {
         event.preventDefault();
-        console.log('Sign Out');
+
+        // Dispatch logut
+        dispatchUser({
+            type: "LOGOUT",
+        });
     }
 
+    // Función para iniciar sesión
     const handleSignIn = async event => {
         event.preventDefault();
         console.log('Sign In');
+        const user = {};
+
+        // Dispatch login
+        dispatchUser({
+            type: "LOGIN",
+            user: user
+        });
     }
 
+    // Variable de manejo de apertura del menú
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
@@ -28,6 +43,7 @@ export default function Header() {
                 />
             </Link>
             <nav>
+                {/* Si ha existe una sesión activa mostrar el menú de usuario */}
                 { currentUser ? (
                     <div className="relative">
                         <div onClick={() => setMenuOpen(!menuOpen)} className="flex items-center cursor-pointer">
@@ -44,6 +60,7 @@ export default function Header() {
                                 />
                             </svg>
                         </div>
+                        {/* Manejar apertura del menú desplegable */}
                         {menuOpen && (
                             <div
                                 onClick={() => setMenuOpen(false)}
@@ -62,8 +79,10 @@ export default function Header() {
                             </div>
                         )}
                     </div>
-                ) : (
+                ) :
+                (
                     <div className="profile">
+                        {/* Si no inicio sesión mostrar el botón de iniciar*/}
                         <a href="#" onClick={handleSignIn} className="text-gray-700 font-medium">
                             Sign In with Google
                         </a>
