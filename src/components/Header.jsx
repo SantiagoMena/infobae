@@ -79,14 +79,22 @@ export default function Header() {
                                 className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-50"
                             >
                                 <ul>
-                                    <li className="px-4 py-2 text-gray-700 hover:bg-gray-100">
-                                        <Link href="usuarios">Usuarios</Link>
-                                    </li>
-                                    <li className="px-4 py-2 text-gray-700 hover:bg-gray-100">
-                                        <a href="#" onClick={handleSignOut}>
+                                    <Link href="/">
+                                        <li className="px-4 py-2 text-gray-700 hover:bg-gray-100">
+                                            Posts
+                                        </li>
+                                    </Link>
+                                    <Link href="usuarios">
+                                        <li className="px-4 py-2 text-gray-700 hover:bg-gray-100">
+                                           Usuarios
+                                        </li>
+                                    </Link>
+
+                                    <Link href="#" onClick={handleSignOut}>
+                                        <li className="px-4 py-2 text-gray-700 hover:bg-gray-100">
                                             Sign Out
-                                        </a>
-                                    </li>
+                                        </li>
+                                    </Link>
                                 </ul>
                             </div>
                         )}

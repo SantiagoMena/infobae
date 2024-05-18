@@ -27,7 +27,7 @@ export default function Users() {
     return (
         <>
             <Header />
-            <section className={"grid gap-6 lg:grid-cols-4 md:grid-cols-2 grid-cols-1"}>
+            <section className={"grid gap-6 lg:grid-cols-4 md:grid-cols-2 grid-cols-1 place-items-center"}>
                 {
                     currentUser ?
                         users && users.map((user) => <User key={user.uid} user={user} />)
