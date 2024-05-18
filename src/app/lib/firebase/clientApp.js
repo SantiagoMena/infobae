@@ -8,3 +8,5 @@ import { getAuth } from "firebase/auth";
 export const firebaseApp = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
 // Get Auth Firebase
 export const auth = getAuth(firebaseApp);
+// Get Firestore Firebase
+export const db = getFirestore(firebaseApp);
