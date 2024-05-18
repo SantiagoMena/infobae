@@ -2,6 +2,7 @@
 import {useContext, useState} from "react";
 import {CurrentUserContext} from "@/app/providers";
 import Link from "next/link";
+import {signInWithGoogle, signOut} from "@/app/lib/firebase/auth";
 
 export default function Header() {
     // Obtener usuario del contexto
@@ -10,24 +11,30 @@ export default function Header() {
     // Función para cerrar sesión
     const handleSignOut = async event => {
         event.preventDefault();
-
-        // Dispatch logut
-        dispatchUser({
-            type: "LOGOUT",
-        });
+        try {
+            await signOut();
+            // Dispatch logut
+            dispatchUser({
+                type: "LOGOUT",
+            });
+        } catch (e) {
+            console.error(e);
+        }
     }
 
     // Función para iniciar sesión
     const handleSignIn = async event => {
         event.preventDefault();
-        console.log('Sign In');
-        const user = {};
-
-        // Dispatch login
-        dispatchUser({
-            type: "LOGIN",
-            user: user
-        });
+        try {
+            const user = await signInWithGoogle();
+            // Dispatch login
+            dispatchUser({
+                type: "LOGIN",
+                user
+            });
+        } catch (e) {
+            console.error(e);
+        }
     }
 
     // Variable de manejo de apertura del menú
