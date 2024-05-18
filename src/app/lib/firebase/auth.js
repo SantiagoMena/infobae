@@ -3,7 +3,7 @@ import {
     signInWithPopup,
 } from "firebase/auth";
 
-import { auth } from "@/lib/firebase/clientApp";
+import { auth } from "./clientApp";
 
 // Función signIn Firebase Google Auth
 export async function signInWithGoogle() {

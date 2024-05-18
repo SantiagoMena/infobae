@@ -1,4 +1,4 @@
-import {db} from "@/lib/firebase/clientApp";
+import {db} from "./clientApp";
 import { doc, setDoc, getDoc, getDocs, query, collection } from "firebase/firestore";
 
 // persistir usuario en firestore
