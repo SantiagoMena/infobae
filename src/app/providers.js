@@ -1,6 +1,7 @@
 'use client';
 import {createContext, useEffect, useReducer} from "react";
 import {userReducer} from "@/app/reducers/userReducer";
+import {persistUserIfNotExists} from "@/app/lib/firebase/firestore";
 
 export const CurrentUserContext = createContext(undefined);
 
@@ -21,6 +22,8 @@ export default function Providers({ children }) {
     useEffect(() => {
         // Si el usuario cambio y no es nulo asignarlo al localstorage
         if (currentUser) {
+            // Persistir usuario en la base de datos si no existe
+            persistUserIfNotExists(currentUser).catch(console.error);
             localStorage.setItem("user", JSON.stringify(currentUser));
         } else { // Si el usuario es nulo o no se desasigno eliminar del local storage
             localStorage.removeItem("user");
