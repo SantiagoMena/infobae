@@ -2,7 +2,7 @@
 import {useContext, useState} from "react";
 import {CurrentUserContext} from "@/app/providers";
 import Link from "next/link";
-import {signInWithGoogle, signOut} from "@/app/lib/firebase/auth";
+import {signInWithGoogle, signOut} from "@/lib/firebase/auth";
 
 export default function Header() {
     // Obtener usuario del contexto

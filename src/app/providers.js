@@ -1,7 +1,7 @@
 'use client';
 import {createContext, useEffect, useReducer} from "react";
-import {userReducer} from "@/app/reducers/userReducer";
-import {persistUserIfNotExists} from "@/app/lib/firebase/firestore";
+import {userReducer} from "@/reducers/userReducer";
+import {persistUserIfNotExists} from "@/lib/firebase/firestore";
 
 export const CurrentUserContext = createContext(undefined);
 
